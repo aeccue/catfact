@@ -1,6 +1,6 @@
-package jp.speakbuddy.edisonandroidexercise.ui
+package jp.speakbuddy.catfact.ui
 
-import jp.speakbuddy.edisonandroidexercise.ui.fact.FactViewModel
+import jp.speakbuddy.catfact.ui.fact.FactViewModel
 import org.junit.Test
 
 class FactViewModelTest {

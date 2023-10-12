@@ -1,4 +1,4 @@
-package jp.speakbuddy.edisonandroidexercise.ui.theme
+package jp.speakbuddy.catfact.ui.theme
 
 import android.app.Activity
 import android.os.Build

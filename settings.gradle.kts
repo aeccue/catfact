@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "edison_android_exercise"
+rootProject.name = "Cat Facts"
 
 include(":app")

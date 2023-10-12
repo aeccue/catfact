@@ -14,11 +14,11 @@ plugins {
 }
 
 android {
-    namespace = "jp.speakbuddy.edisonandroidexercise"
+    namespace = "jp.speakbuddy.catfact"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "jp.speakbuddy.edisonandroidexercise"
+        applicationId = "jp.speakbuddy.catfact"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
