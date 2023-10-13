@@ -12,7 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Cat Facts"
+rootProject.name = "Cat Fact"
 
 include(":app")
 include(":modules:network")
