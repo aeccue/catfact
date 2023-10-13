@@ -1,6 +1,5 @@
 package jp.speakbuddy.catfact.network.client
 
-import android.util.Log
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -8,7 +7,6 @@ import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode
 import jp.speakbuddy.catfact.network.response.NetworkResponse
 import javax.inject.Inject
-
 
 /**
  * Network client that uses the Ktor client
