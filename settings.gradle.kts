@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "Cat Fact"
 
 include(":app")
+include(":modules:fact")
 include(":modules:network")
