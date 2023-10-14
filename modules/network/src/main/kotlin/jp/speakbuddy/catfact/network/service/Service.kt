@@ -1,4 +1,4 @@
-package jp.speakbuddy.catfact.network.api
+package jp.speakbuddy.catfact.network.service
 
 import jp.speakbuddy.catfact.network.client.NetworkClient
 import jp.speakbuddy.catfact.network.response.NetworkResponse
@@ -8,7 +8,7 @@ import kotlinx.serialization.json.Json
  * Abstract API interface that makes network requests with the network client and automatically
  * decode response from JSON.
  */
-abstract class Api(
+abstract class Service(
     protected val route: String,
     protected val networkClient: NetworkClient,
     protected val json: Json
