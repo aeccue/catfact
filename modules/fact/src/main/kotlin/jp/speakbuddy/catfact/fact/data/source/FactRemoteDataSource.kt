@@ -6,7 +6,7 @@ import jp.speakbuddy.catfact.network.service.CatFactService
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
-interface FactRemoteDataSource {
+internal interface FactRemoteDataSource {
 
     suspend fun fetch(): FactResponse?
 }
