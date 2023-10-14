@@ -5,8 +5,9 @@ import androidx.datastore.core.Serializer
 import com.google.protobuf.InvalidProtocolBufferException
 import java.io.InputStream
 import java.io.OutputStream
+import javax.inject.Inject
 
-internal object FactResponseSerializer : Serializer<FactResponse> {
+internal class FactResponseSerializer @Inject constructor() : Serializer<FactResponse> {
 
     override val defaultValue: FactResponse = FactResponse.getDefaultInstance()
 

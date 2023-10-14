@@ -12,6 +12,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import jp.speakbuddy.catfact.fact.data.model.FactResponse
+import jp.speakbuddy.catfact.fact.data.model.FactResponseSerializer
+import jp.speakbuddy.catfact.fact.data.repository.FactRepository
+import jp.speakbuddy.catfact.fact.data.repository.FactRepositoryImpl
 import jp.speakbuddy.catfact.fact.data.source.FactDataStore
 import jp.speakbuddy.catfact.fact.data.source.FactLocalDataSource
 import jp.speakbuddy.catfact.fact.data.source.FactRemoteDataSource
@@ -36,8 +39,14 @@ internal interface DataStoreModule {
     }
 
     @Binds
+    fun bindSerializer(serializer: FactResponseSerializer): Serializer<FactResponse>
+
+    @Binds
     fun bindLocalDataSource(source: FactDataStore): FactLocalDataSource
 
     @Binds
     fun bindRemoteDataSource(source: FactService): FactRemoteDataSource
+
+    @Binds
+    fun bindRepository(repository: FactRepositoryImpl): FactRepository
 }
