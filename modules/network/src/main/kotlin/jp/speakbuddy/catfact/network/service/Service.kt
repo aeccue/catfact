@@ -9,6 +9,7 @@ import kotlinx.serialization.json.Json
  * decode response from JSON.
  */
 abstract class Service(
+    protected val baseEndpoint: String,
     protected val route: String,
     protected val networkClient: NetworkClient,
     protected val json: Json
@@ -18,6 +19,7 @@ abstract class Service(
         queries: Map<String, String> = emptyMap()
     ): Data? {
         val response = networkClient.request(
+            baseEndpoint = baseEndpoint,
             route = route,
             queries = queries
         )

@@ -5,6 +5,7 @@ import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode
+import io.ktor.http.appendPathSegments
 import jp.speakbuddy.catfact.network.response.NetworkResponse
 import javax.inject.Inject
 
@@ -16,12 +17,14 @@ internal class KtorNetworkClient @Inject constructor(
 ) : NetworkClient {
 
     override suspend fun request(
+        baseEndpoint: String,
         route: String,
         queries: Map<String, String>
     ): NetworkResponse {
         try {
-            val response = httpClient.get(route) {
+            val response = httpClient.get(baseEndpoint) {
                 url {
+                    appendPathSegments(route)
                     for ((parameter, value) in queries) {
                         parameters.append(parameter, value)
                     }

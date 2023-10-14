@@ -9,6 +9,7 @@ import jp.speakbuddy.catfact.network.response.NetworkResponse
 interface NetworkClient {
 
     suspend fun request(
+        baseEndpoint: String,
         route: String,
         queries: Map<String, String> = emptyMap()
     ): NetworkResponse
