@@ -5,17 +5,22 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.core.Serializer
 import androidx.datastore.dataStoreFile
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import jp.speakbuddy.catfact.fact.data.model.FactResponse
+import jp.speakbuddy.catfact.fact.data.source.FactDataStore
+import jp.speakbuddy.catfact.fact.data.source.FactLocalDataSource
+import jp.speakbuddy.catfact.fact.data.source.FactRemoteDataSource
+import jp.speakbuddy.catfact.fact.data.source.FactService
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface DataStoreModule {
+internal interface DataStoreModule {
 
     companion object {
 
@@ -29,4 +34,10 @@ interface DataStoreModule {
                 context.dataStoreFile("fact.pb")
             }
     }
+
+    @Binds
+    fun bindLocalDataSource(source: FactDataStore): FactLocalDataSource
+
+    @Binds
+    fun bindRemoteDataSource(source: FactService): FactRemoteDataSource
 }
