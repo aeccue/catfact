@@ -4,13 +4,10 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
-
-    alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.android.hilt)
 }
 
 android {
-    namespace = "jp.speakbuddy.catfact.network"
+    namespace = "jp.speakbuddy.catfact.model"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -24,12 +21,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "CAT_FACT_ENDPOINT", "\"https://catfact.ninja\"")
-        }
-
-        debug {
-            // can swap this with debug or staging endpoint
-            buildConfigField("String", "CAT_FACT_ENDPOINT", "\"https://catfact.ninja\"")
         }
     }
 
@@ -51,17 +42,6 @@ android {
 }
 
 dependencies {
-    api(project(":core:model"))
-    
     implementation(libs.kotlin.stdlib)
-
-    implementation(libs.android.hilt)
-    kapt(libs.android.hilt.compiler)
-
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.cio)
-}
-
-kapt {
-    correctErrorTypes = true
+    api(libs.kotlinx.serialization.json)
 }
