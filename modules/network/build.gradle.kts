@@ -24,6 +24,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "CAT_FACT_ENDPOINT", "\"https://catfact.ninja\"")
+        }
+
+        debug {
+            // can swap this with debug or staging endpoint
+            buildConfigField("String", "CAT_FACT_ENDPOINT", "\"https://catfact.ninja\"")
         }
     }
 
