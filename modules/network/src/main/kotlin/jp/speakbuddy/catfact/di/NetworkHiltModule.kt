@@ -15,7 +15,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal interface NetworkModule {
+internal interface NetworkHiltModule {
 
     companion object {
 
