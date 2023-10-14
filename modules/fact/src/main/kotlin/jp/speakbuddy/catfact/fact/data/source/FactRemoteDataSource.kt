@@ -6,15 +6,15 @@ import jp.speakbuddy.catfact.network.service.CatFactService
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
-interface FactService {
+interface FactRemoteDataSource {
 
     suspend fun fetch(): Fact?
 }
 
-internal class FactServiceProvider @Inject constructor(
+internal class FactService @Inject constructor(
     networkClient: NetworkClient,
     json: Json
-) : FactService, CatFactService(
+) : FactRemoteDataSource, CatFactService(
     route = ROUTE,
     networkClient = networkClient,
     json = json
