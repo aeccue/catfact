@@ -18,7 +18,7 @@ internal class FactDataStore @Inject constructor(
 
     override fun fetch(): Flow<FactResponse> = dataStore.data
 
-    override suspend fun update(fact: FactResponse) {
-        dataStore.updateData { fact }
+    override suspend fun update(newFact: FactResponse) {
+        dataStore.updateData { newFact }
     }
 }
