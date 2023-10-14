@@ -65,7 +65,7 @@ protobuf {
 }
 
 dependencies {
-    implementation(project(":modules:network"))
+    implementation(project(":core:network"))
     implementation(libs.kotlin.stdlib)
 
     implementation(libs.android.hilt)
