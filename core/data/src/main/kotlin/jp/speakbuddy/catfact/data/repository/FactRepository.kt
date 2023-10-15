@@ -1,4 +1,4 @@
-package jp.speakbuddy.catfact.fact.data.repository
+package jp.speakbuddy.catfact.data.repository
 
 import jp.speakbuddy.catfact.data.model.Fact
 import jp.speakbuddy.catfact.database.dao.FactDao

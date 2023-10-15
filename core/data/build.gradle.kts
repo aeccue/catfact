@@ -3,10 +3,13 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.android.hilt)
 }
 
 android {
-    namespace = "jp.speakbuddy.catfact.model"
+    namespace = "jp.speakbuddy.catfact.data"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -41,5 +44,15 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:database"))
+    implementation(project(":core:service"))
+
     implementation(libs.kotlin.stdlib)
+
+    implementation(libs.android.hilt)
+    kapt(libs.android.hilt.compiler)
+}
+
+kapt {
+    correctErrorTypes = true
 }
