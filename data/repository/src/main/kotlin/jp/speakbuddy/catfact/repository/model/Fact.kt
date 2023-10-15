@@ -1,4 +1,4 @@
-package jp.speakbuddy.catfact.data.model
+package jp.speakbuddy.catfact.repository.model
 
 data class Fact(
     val fact: String,

@@ -1,7 +1,7 @@
 package jp.speakbuddy.catfact.domain.usecase
 
-import jp.speakbuddy.catfact.data.model.Fact
-import jp.speakbuddy.catfact.data.repository.FactRepository
+import jp.speakbuddy.catfact.repository.model.Fact
+import jp.speakbuddy.catfact.repository.FactRepository
 import jp.speakbuddy.catfact.domain.model.FactWithMultipleCats
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

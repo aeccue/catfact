@@ -1,6 +1,6 @@
-package jp.speakbuddy.catfact.data.repository
+package jp.speakbuddy.catfact.repository
 
-import jp.speakbuddy.catfact.data.model.Fact
+import jp.speakbuddy.catfact.repository.model.Fact
 import jp.speakbuddy.catfact.database.dao.FactDao
 import jp.speakbuddy.catfact.database.model.FactEntity
 import jp.speakbuddy.catfact.service.CatFactService
