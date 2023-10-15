@@ -3,13 +3,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-
-    alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.android.hilt)
 }
 
 android {
-    namespace = "jp.speakbuddy.catfact.ui.fact"
+    namespace = "jp.speakbuddy.catfact.ui.core"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -49,15 +46,15 @@ android {
 }
 
 dependencies {
-    implementation(project(":ui:core"))
-    implementation(project(":domain"))
-
     implementation(libs.kotlin.stdlib)
 
-    implementation(libs.android.hilt)
-    kapt(libs.android.hilt.compiler)
-}
+    api(platform(libs.androidx.compose.bom))
+    api(libs.androidx.activity.compose)
+    api(libs.androidx.compose.material3)
 
-kapt {
-    correctErrorTypes = true
+    debugApi(libs.androidx.compose.ui.tooling)
+    api(libs.androidx.compose.ui.tooling.preview)
+
+    api(libs.androidx.lifecycle.viewmodel)
+    api(libs.androidx.lifecycle.viewmodel.compose)
 }
