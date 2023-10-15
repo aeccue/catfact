@@ -1,4 +1,4 @@
-package jp.speakbuddy.catfact.fact.data.model
+package jp.speakbuddy.catfact.data.model
 
 import kotlinx.serialization.Serializable
 
