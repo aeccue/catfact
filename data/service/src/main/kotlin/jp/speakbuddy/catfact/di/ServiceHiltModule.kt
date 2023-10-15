@@ -4,13 +4,13 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import jp.speakbuddy.catfact.service.CatFactService
+import jp.speakbuddy.catfact.service.CatFactServiceImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
 internal interface ServiceHiltModule {
 
-    @Singleton
     @Binds
-    fun bindCatFactService(service: jp.speakbuddy.catfact.service.CatFactServiceImpl): jp.speakbuddy.catfact.service.CatFactService
+    fun bindCatFactService(service: CatFactServiceImpl): CatFactService
 }

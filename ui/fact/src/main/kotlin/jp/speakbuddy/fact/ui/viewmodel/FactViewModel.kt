@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.speakbuddy.catfact.domain.usecase.GetFactWithMultipleCats
+import jp.speakbuddy.catfact.repository.FactRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -12,6 +13,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 sealed interface FactUIState {
@@ -30,7 +32,8 @@ private const val SHOW_LENGTH_THRESHOLD = 100
 
 @HiltViewModel
 class FactViewModel @Inject constructor(
-    getFactWithMultipleCats: GetFactWithMultipleCats
+    private val factRepository: FactRepository,
+    getFactWithMultipleCats: GetFactWithMultipleCats,
 ) : ViewModel() {
 
     private val isLoading: MutableStateFlow<Boolean> = MutableStateFlow(true)
@@ -45,9 +48,6 @@ class FactViewModel @Inject constructor(
                     showMultipleCats = it.hasMultipleCats,
                     showLength = it.length > SHOW_LENGTH_THRESHOLD
                 )
-            }
-            .onEach {
-                isLoading.value = false
             }
             .stateIn(
                 scope = viewModelScope,
@@ -72,4 +72,16 @@ class FactViewModel @Inject constructor(
             started = SharingStarted.Eagerly,
             initialValue = FactUIState.Loading
         )
+
+    init {
+        refresh()
+    }
+
+    fun refresh() {
+        viewModelScope.launch {
+            isLoading.value = true
+            factRepository.refresh()
+            isLoading.value = false
+        }
+    }
 }
