@@ -8,6 +8,9 @@ import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.serialization.kotlinx.json.DefaultJson
+import io.ktor.serialization.kotlinx.json.json
 import jp.speakbuddy.catfact.network.client.KtorNetworkClient
 import jp.speakbuddy.catfact.network.client.NetworkClient
 import kotlinx.serialization.json.Json
@@ -19,23 +22,18 @@ internal interface NetworkHiltModule {
 
     companion object {
 
-        @Singleton
-        @Provides
-        fun provideJson(): Json = Json {
-            encodeDefaults = true
-            isLenient = true
-            allowSpecialFloatingPointValues = true
-            allowStructuredMapKeys = true
-            prettyPrint = false
-            useArrayPolymorphism = false
-            ignoreUnknownKeys = true
-        }
-
         @Provides
         fun provideHttpClientEngine(): HttpClientEngineFactory<*> = CIO
 
         @Provides
-        fun provideHttpClient(engine: HttpClientEngineFactory<*>): HttpClient = HttpClient(engine)
+        fun provideHttpClient(engine: HttpClientEngineFactory<*>): HttpClient =
+            HttpClient(engine) {
+                install(ContentNegotiation) {
+                    json(Json(from = DefaultJson) {
+                        ignoreUnknownKeys = true
+                    })
+                }
+            }
     }
 
     @Singleton

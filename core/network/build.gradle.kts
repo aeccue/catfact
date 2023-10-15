@@ -52,14 +52,16 @@ android {
 
 dependencies {
     api(project(":core:model"))
-    
+
     implementation(libs.kotlin.stdlib)
 
     implementation(libs.android.hilt)
     kapt(libs.android.hilt.compiler)
 
     implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.serialization.json)
 }
 
 kapt {
