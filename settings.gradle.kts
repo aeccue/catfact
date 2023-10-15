@@ -15,8 +15,9 @@ dependencyResolutionManagement {
 rootProject.name = "Cat Fact"
 
 include(":app")
-include(":core:data")
-include(":core:database")
-include(":core:domain")
-include(":core:network")
-include(":core:service")
+include(":data")
+include(":data:repository")
+include(":data:database")
+include(":data:network")
+include(":data:service")
+include(":domain")
