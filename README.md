@@ -62,3 +62,4 @@ An app that shows cat facts is meant to be fun and light-hearted. Therefore, the
 - error handling for network requests
 - allow user to view past cat facts
 - animation fine-tuning
+- add more tests (currently domain layer contains some tests)

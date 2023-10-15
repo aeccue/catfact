@@ -12,7 +12,7 @@ interface GetFactWithMultipleCats {
     operator fun invoke(): Flow<FactWithMultipleCats>
 }
 
-internal class GetFactWithMutlipleCatsUseCase @Inject constructor(
+internal class GetFactWithMultipleCatsUseCase @Inject constructor(
     private val repository: FactRepository
 ) : GetFactWithMultipleCats {
 

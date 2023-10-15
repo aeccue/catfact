@@ -41,6 +41,12 @@ android {
             jvmTarget = JavaVersion.VERSION_11.toString()
         }
     }
+
+    testOptions {
+        unitTests.all {
+            it.useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
@@ -50,6 +56,10 @@ dependencies {
 
     implementation(libs.android.hilt)
     kapt(libs.android.hilt.compiler)
+
+    testImplementation(libs.kotlin.test)
+    testImplementation(libs.kotlin.coroutine.test)
+    testImplementation(libs.mockk)
 }
 
 kapt {
