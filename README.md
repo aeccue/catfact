@@ -5,9 +5,10 @@
     <img src="samples/dark-mode.jpg" alt="sample image in dark mode" width="300px"/>
 </p>
 
+_A sample video is available in the samples directory._
+
 ## Description
-An app that shows a new random fact about cats everytime you tap the screen. A sample video is 
-available in the samples directory.
+An app that shows a new random fact about cats everytime you tap the screen. 
 
 ### Changes from requirements
 - design and font has been changed (see design process below)
