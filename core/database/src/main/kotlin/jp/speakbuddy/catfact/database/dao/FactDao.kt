@@ -1,10 +1,10 @@
-package jp.speakbuddy.catfact.room.dao
+package jp.speakbuddy.catfact.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import jp.speakbuddy.catfact.data.model.Fact
-import jp.speakbuddy.catfact.room.model.FactEntity
+import jp.speakbuddy.catfact.database.model.FactEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

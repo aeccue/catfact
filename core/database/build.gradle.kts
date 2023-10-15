@@ -10,7 +10,7 @@ plugins {
 }
 
 android {
-    namespace = "jp.speakbuddy.catfact.room"
+    namespace = "jp.speakbuddy.catfact.database"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {

@@ -1,4 +1,4 @@
-package jp.speakbuddy.catfact.room.model
+package jp.speakbuddy.catfact.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

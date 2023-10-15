@@ -45,7 +45,7 @@ android {
 
 dependencies {
     implementation(project(":core:model"))
-    implementation(project(":core:room"))
+    implementation(project(":core:database"))
     implementation(project(":core:service"))
 
     implementation(libs.kotlin.stdlib)
