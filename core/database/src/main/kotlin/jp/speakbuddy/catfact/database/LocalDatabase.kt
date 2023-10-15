@@ -6,7 +6,7 @@ import jp.speakbuddy.catfact.database.dao.FactDao
 import jp.speakbuddy.catfact.database.model.FactEntity
 
 @Database(entities = [FactEntity::class], version = 1)
-internal abstract class Database : RoomDatabase() {
+internal abstract class LocalDatabase : RoomDatabase() {
 
     abstract fun factDao(): FactDao
 }
