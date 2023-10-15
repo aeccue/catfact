@@ -1,6 +1,6 @@
 package jp.speakbuddy.catfact.network.response
 
-internal sealed interface NetworkResponse<Data> {
+sealed interface NetworkResponse<Data> {
 
     /**
      * Returns the data in JSON format

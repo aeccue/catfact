@@ -1,14 +1,16 @@
-package jp.speakbuddy.catfact.network.service
+package jp.speakbuddy.catfact.service
 
 import jp.speakbuddy.catfact.data.model.Fact
 import jp.speakbuddy.catfact.network.BuildConfig
 import jp.speakbuddy.catfact.network.client.NetworkClient
 import jp.speakbuddy.catfact.network.response.NetworkResponse
+import jp.speakbuddy.catfact.service.model.FactApiResponse
+import jp.speakbuddy.catfact.service.model.asFact
 import javax.inject.Inject
 
 /**
- * Service for all api calls to cat fact endpoint. It can be expanded to contain various classes
- * focused on single endpoints if the api is more complicated.
+ * Service for all api calls to cat fact endpoint. It transforms internal api responses to data
+ * models used throughout the rest of the app.
  */
 interface CatFactService {
 
@@ -25,7 +27,7 @@ internal class CatFactServiceImpl @Inject constructor(
         const val ROUTE_FACT = "fact"
     }
 
-    override suspend fun fetch(): Fact? = call(route = ROUTE_FACT)
+    override suspend fun fetch(): Fact? = call<FactApiResponse>(route = ROUTE_FACT)?.asFact
 
     private suspend inline fun <reified Data : Any> call(
         route: String,

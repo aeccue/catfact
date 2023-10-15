@@ -3,6 +3,7 @@ package jp.speakbuddy.catfact.fact.data.model
 import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.Serializer
 import com.google.protobuf.InvalidProtocolBufferException
+import jp.speakbuddy.catfact.data.model.Fact
 import java.io.InputStream
 import java.io.OutputStream
 import javax.inject.Inject

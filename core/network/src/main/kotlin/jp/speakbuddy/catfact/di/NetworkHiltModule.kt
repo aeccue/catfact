@@ -13,8 +13,6 @@ import io.ktor.serialization.kotlinx.json.DefaultJson
 import io.ktor.serialization.kotlinx.json.json
 import jp.speakbuddy.catfact.network.client.KtorNetworkClient
 import jp.speakbuddy.catfact.network.client.NetworkClient
-import jp.speakbuddy.catfact.network.service.CatFactService
-import jp.speakbuddy.catfact.network.service.CatFactServiceImpl
 import kotlinx.serialization.json.Json
 import javax.inject.Singleton
 
@@ -41,8 +39,4 @@ internal interface NetworkHiltModule {
     @Singleton
     @Binds
     fun bindsNetworkClient(client: KtorNetworkClient): NetworkClient
-
-    @Singleton
-    @Binds
-    fun bindCatFactService(service: CatFactServiceImpl): CatFactService
 }

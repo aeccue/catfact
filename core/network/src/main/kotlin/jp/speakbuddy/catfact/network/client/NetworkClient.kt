@@ -9,7 +9,7 @@ import kotlin.reflect.typeOf
  * Network client interface for making network requests. Actual implementation is hidden and
  * interchangeable.
  */
-internal abstract class NetworkClient {
+abstract class NetworkClient {
 
     suspend inline fun <reified Data : Any> request(
         baseEndpoint: String,

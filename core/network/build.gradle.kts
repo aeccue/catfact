@@ -3,7 +3,6 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
 
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.android.hilt)
@@ -51,8 +50,6 @@ android {
 }
 
 dependencies {
-    api(project(":core:model"))
-
     implementation(libs.kotlin.stdlib)
 
     implementation(libs.android.hilt)
