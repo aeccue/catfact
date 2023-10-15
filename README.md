@@ -1,70 +1,64 @@
-# Before you start
-### About the tasks and the descriptions
-A description of each task in this challenge is not very specific and strict. To be honest, we don't think we're providing perfect requirements.
+# Cat Fact App
 
-If you have better idea (more effective, efficient, creative etc), it's  more than welcome, so let's ignore the descriptions and implement in your way 👍
+<p align="center">
+    <img src="samples/light-mode.jpg" alt="sample image in light mode" width="300"/>
+    <img src="samples/dark-mode.jpg" alt="sample image in dark mode" width="300px"/>
+</p>
 
-### Library and framework
-If you haven't used a library before, (Jetpack Compose, for example) or not confident enough, it's okay!
+## Description
+An app that shows a new random fact about cats everytime you tap the screen. A sample video is 
+available in the samples directory.
 
-You can either
-- Skip & go alternative solution (`databinding` instead of Jetpack Compose, for example)
-- Spend some time to learn, and try to use it
+### Changes from requirements
+- design and font has been changed (see design process below)
+- instead of a button, tapping the cat at the bottom will show a new cat fact
+- instead of showing a text that says "Multiple Cats!", the app literally shows multiple cats
+- Room is used instead of Datastore to keep a local database of cat facts
+  - Datastore is more for key-value storage, like for user preferences
+  - the reason behind this is that it can be extended in the future to allow users to browse 
+    past cat facts
 
-Nevertheless, it's recommended to **quickly learn a new thing** since each task is simple in this challenge.
+## Architecture
+### Data Layer
 
-### Time
-**We don't set the time limitation**. You can take your time. Please take it easy ✌🏻
+**Network Module**
+- contains the network client that makes requests to a given remote endpoint
+- Ktor has been selected for the implementation of the network client for its ease of use in Kotlin and extreme flexibility
+- returns data wrapped in NetworkResponse that indicates either a success or failure
 
-But at the same time, we don't wouldn't like you to spend a lot of time because we don't want to consume your valuable time.
+**Service Module**
+- contains all the api calls used in the app
+- currently only CatFactService is available, but can be extended in the future to add more endpoints
 
-The below is approximate time for each task group.
-- 1~2 hours on `TODO`
-- 2~3 hours on `Optional`
+**Database Module**
+- module for storing remote data locally
+- uses Room
+- currently only contains DAO for cat facts, but can be extended to add more DAOs
 
-Optional requirements are optional, literally.  Please do them only if you can spend more time.
+**Repository Module**
+- in charge of transforming data from various data sources to models used throughout the app
+- repositories are the main interface that the rest of the app will work with
+- local data source is used as the single source of truth, while fetching from the remote data source will only update the local data source
 
-# Tasks - Fact app
-This app shows a fact via [fact free api](https://catfact.ninja/fact).
+### Domain Layer
+- contains common use cases used throughout the app
+- at the moment, there is only one use case: check if a fact should show the length and if it contains the word "cats"
 
-![Screenshot](./fact_app.png)
+### UI Layer
 
-## Issues
-It works, but does not satisfy some requirements.
+**Core Module**
+- contains common ui components and themes
 
-Please implement TODOs!
+**Fact Module**
+- main module for the fact feature
 
-If you have time after finishing TODOs, please check & try [Optional](#optional).
+## Design Process
+An app that shows cat facts is meant to be fun and light-hearted. Therefore, the font and color choices reflect that, almost as if a child wrote the fact and designed the app. Elements chosen for the UI were also meant to enhance the playfulness of the app, such as:
+- tapping the cat at the bottom will show a new fact.
+- if the length is greater than 100, the cat is the one that tells you that
+- if the word "cats" shows up in the facts, multiple cats will literally pop into the screen
 
-### TODO
-- Access data via `Data layer`
-- Add local data source using [Jetpack DataStore](https://developer.android.com/topic/libraries/architecture/datastore)
-- Add dependency injection by `Hilt`
-- Show the `length` from the api response below the `fact` content *only when*
-  the `length` is greater than 100
-- Show the text "Multiple cats!" when the `fact` contains the word `cats`
-  - No context check is required, simply finding the worked `cats` is fine
-- Make the UI state immutable as much as possible
-- Add unit or UI tests depending on your code
-
----
-#### Example screenshot after implementing TODOs
-![Screenshot](./fact_app_finish.jpg)
-
----
-
-### Optional
-If you have time and want to do more, please
-- (Design) Add the `Top app bar` and update the design as you want 🏰
-- (Testing) Add [JUnit5](https://github.com/mannodermaus/android-junit5) and `fake` or `mockk`
-- (Gradle) Add a `version catalog` 📗
-- (Future growth) `Modularize` the app ✌🏻
-- (Future growth) Add `Domain layer` 🚴‍️
-
-## To submit your solution
-Please
-- Fork this repo ⑂
-- Create a pull request in your own repo 📝
-  - ❌ Please do not create one in this repo
-- Send your the pull request's link to us 🙏
-  - We would like to leave some comments for the next step
+## Improvements
+- error handling for network requests
+- allow user to view past cat facts
+- animation fine-tuning
