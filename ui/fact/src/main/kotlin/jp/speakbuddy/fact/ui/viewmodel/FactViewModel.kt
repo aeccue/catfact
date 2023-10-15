@@ -49,6 +49,9 @@ class FactViewModel @Inject constructor(
                     showLength = it.length > SHOW_LENGTH_THRESHOLD
                 )
             }
+            .onEach {
+                isLoading.value = false
+            }
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.Eagerly,
@@ -79,9 +82,10 @@ class FactViewModel @Inject constructor(
 
     fun refresh() {
         viewModelScope.launch {
-            isLoading.value = true
-            factRepository.refresh()
-            isLoading.value = false
+            if (!isLoading.value) {
+                isLoading.value = true
+                factRepository.refresh()
+            }
         }
     }
 }

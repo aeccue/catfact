@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title">Did you know that…</string>
+    <string name="instructions">Tap the cat for a new fact</string>
+    <string name="length">Length is %1$d!</string>
+    <string name="cd_cat">Cat decoration</string>
+    <string name="cd_speech">Line for speech bubble</string>
 </resources>
