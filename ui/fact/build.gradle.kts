@@ -50,6 +50,9 @@ dependencies {
 
     implementation(libs.android.hilt)
     kapt(libs.android.hilt.compiler)
+
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }
 
 kapt {
