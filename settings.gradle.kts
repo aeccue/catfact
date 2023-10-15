@@ -17,5 +17,6 @@ rootProject.name = "Cat Fact"
 include(":app")
 include(":core:data")
 include(":core:database")
+include(":core:domain")
 include(":core:network")
 include(":core:service")
