@@ -51,7 +51,7 @@ android {
 }
 
 dependencies {
-    api(project(":core:model"))
+    implementation(project(":core:model"))
     implementation(project(":core:network"))
 
     implementation(libs.kotlin.stdlib)

@@ -4,12 +4,13 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 
+    alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.android.hilt)
 }
 
 android {
-    namespace = "jp.speakbuddy.catfact.data.fact"
+    namespace = "jp.speakbuddy.catfact.room"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -45,13 +46,14 @@ android {
 
 dependencies {
     implementation(project(":core:model"))
-    implementation(project(":core:room"))
-    implementation(project(":core:service"))
 
     implementation(libs.kotlin.stdlib)
 
     implementation(libs.android.hilt)
     kapt(libs.android.hilt.compiler)
+
+    implementation(libs.androidx.room)
+    ksp(libs.androidx.room.compiler)
 }
 
 kapt {
