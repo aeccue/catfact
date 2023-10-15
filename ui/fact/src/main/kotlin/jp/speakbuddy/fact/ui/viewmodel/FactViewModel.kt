@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
-internal sealed interface FactUIState {
+sealed interface FactUIState {
 
     data class Data(
         val fact: String,
@@ -29,7 +29,7 @@ internal sealed interface FactUIState {
 private const val SHOW_LENGTH_THRESHOLD = 100
 
 @HiltViewModel
-internal class FactViewModel @Inject constructor(
+class FactViewModel @Inject constructor(
     getFactWithMultipleCats: GetFactWithMultipleCats
 ) : ViewModel() {
 
@@ -43,7 +43,7 @@ internal class FactViewModel @Inject constructor(
                     fact = it.fact,
                     length = it.length,
                     showMultipleCats = it.hasMultipleCats,
-                    showLength = it.length >= SHOW_LENGTH_THRESHOLD
+                    showLength = it.length > SHOW_LENGTH_THRESHOLD
                 )
             }
             .onEach {

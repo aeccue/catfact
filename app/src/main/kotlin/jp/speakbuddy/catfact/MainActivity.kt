@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import dagger.hilt.android.AndroidEntryPoint
 import jp.speakbuddy.catfact.ui.CatFactTheme
+import jp.speakbuddy.fact.ui.FactScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -13,7 +14,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CatFactTheme {
-               
+               FactScreen()
             }
         }
     }
