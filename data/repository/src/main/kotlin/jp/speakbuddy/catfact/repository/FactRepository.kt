@@ -6,6 +6,7 @@ import jp.speakbuddy.catfact.database.model.FactEntity
 import jp.speakbuddy.catfact.service.CatFactService
 import jp.speakbuddy.catfact.service.model.FactApiResponse
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -24,6 +25,7 @@ internal class FactRepositoryImpl @Inject constructor(
     override fun fetch(): Flow<Fact> =
         localDataSource
             .fetchLatest()
+            .filterNotNull()
             .map { it.asFact }
 
     override suspend fun refresh(): Boolean =

@@ -2,7 +2,6 @@ package jp.speakbuddy.catfact.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +17,7 @@ internal object DatabaseHiltModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context): RoomDatabase =
+    fun provideDatabase(@ApplicationContext context: Context): LocalDatabase =
         Room.databaseBuilder(
             context = context,
             klass = LocalDatabase::class.java,

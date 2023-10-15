@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 interface FactDao {
 
     @Query("SELECT * FROM facts ORDER BY id DESC LIMIT 1")
-    fun fetchLatest(): Flow<FactEntity>
+    fun fetchLatest(): Flow<FactEntity?>
 
     @Insert
     suspend fun add(fact: FactEntity)
