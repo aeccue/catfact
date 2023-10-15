@@ -45,8 +45,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:model"))
-
     implementation(libs.kotlin.stdlib)
 
     implementation(libs.android.hilt)

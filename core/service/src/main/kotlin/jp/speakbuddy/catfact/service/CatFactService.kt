@@ -1,11 +1,9 @@
 package jp.speakbuddy.catfact.service
 
-import jp.speakbuddy.catfact.data.model.Fact
 import jp.speakbuddy.catfact.network.BuildConfig
 import jp.speakbuddy.catfact.network.client.NetworkClient
 import jp.speakbuddy.catfact.network.response.NetworkResponse
 import jp.speakbuddy.catfact.service.model.FactApiResponse
-import jp.speakbuddy.catfact.service.model.asFact
 import javax.inject.Inject
 
 /**
@@ -14,7 +12,7 @@ import javax.inject.Inject
  */
 interface CatFactService {
 
-    suspend fun fetch(): Fact?
+    suspend fun fetch(): FactApiResponse?
 }
 
 internal class CatFactServiceImpl @Inject constructor(
@@ -27,7 +25,7 @@ internal class CatFactServiceImpl @Inject constructor(
         const val ROUTE_FACT = "fact"
     }
 
-    override suspend fun fetch(): Fact? = call<FactApiResponse>(route = ROUTE_FACT)?.asFact
+    override suspend fun fetch(): FactApiResponse? = call(route = ROUTE_FACT)
 
     private suspend inline fun <reified Data : Any> call(
         route: String,
