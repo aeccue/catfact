@@ -77,7 +77,9 @@ class FactViewModel @Inject constructor(
         )
 
     init {
-        refresh()
+        viewModelScope.launch {
+            factRepository.refresh()
+        }
     }
 
     fun refresh() {
