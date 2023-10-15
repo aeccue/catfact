@@ -44,7 +44,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
+    api(project(":data"))
 
     implementation(libs.kotlin.stdlib)
 
