@@ -1,4 +1,4 @@
-package jp.speakbuddy.catfact.ui.theme
+package jp.speakbuddy.catfact.ui
 
 import androidx.compose.ui.graphics.Color
 

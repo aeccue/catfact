@@ -1,6 +1,5 @@
 package jp.speakbuddy.catfact.ui
 
-import jp.speakbuddy.catfact.ui.fact.FactViewModel
 import org.junit.Test
 
 class FactViewModelTest {
